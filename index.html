@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Outsource Consultants, Inc.</title>
+    <link rel="preconnect" href="https://oci.madebybuzzworthy.com" />
+    <link rel="preconnect" href="https://images.prismic.io" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="shell shell-header">
+        <div class="topbar">
+          <button class="brand-chip" type="button" aria-label="Homepage">
+            <span class="brand-chip-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <!-- 瞄准镜/十字图标 -->
+                <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.5"></circle>
+                <line x1="12" y1="2" x2="12" y2="7" stroke="currentColor" stroke-width="1.5"></line>
+                <line x1="12" y1="17" x2="12" y2="22" stroke="currentColor" stroke-width="1.5"></line>
+                <line x1="2" y1="12" x2="7" y2="12" stroke="currentColor" stroke-width="1.5"></line>
+                <line x1="17" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="1.5"></line>
+              </svg>
+            </span>
+            <span class="brand-chip-text">OUTSOURCE CONSULTANTS INC.</span>
+          </button>
+
+          <div class="topbar-actions">
+            <div class="nav-menu-slider">
+              <span class="nav-menu-text">MENU</span>
+            </div>
+            <button class="corner-cta" type="button" aria-label="Contact">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="contact-icon" style="transform: rotate(-45deg);">
+                <!-- 倾斜的钢笔图标 -->
+                <rect x="10" y="3" width="4" height="6" rx="1" fill="currentColor"/>
+                <rect x="9" y="9" width="6" height="9" rx="1" fill="currentColor"/>
+                <polygon points="12,18 10,22 14,22" fill="currentColor"/>
+                <rect x="11" y="1" width="2" height="2" rx="0.5" fill="currentColor"/>
+                <rect x="15" y="10" width="2" height="6" rx="0.5" fill="currentColor"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero-section">
+        <div class="hero-image"></div>
+        <div class="hero-image-halftone"></div>
+        <!-- 白色竖线 - 作为底图一部分 -->
+        <div class="hero-line hero-line-left"></div>
+        <div class="hero-line hero-line-right"></div>
+        <canvas id="mouse-trail-canvas" class="mouse-trail-canvas"></canvas>
+        
+        <!-- 目录导航 -->
+        <nav class="hero-nav" aria-label="Main Navigation">
+          <div class="hero-nav-col hero-nav-col-left menu-links">
+            <button type="button">ABOUT</button>
+            <button type="button">SERVICES</button>
+            <button type="button">PROJECTS</button>
+            <button type="button">CLIENTS</button>
+          </div>
+          <div class="hero-nav-col hero-nav-col-right menu-links">
+            <button type="button">CULTURE &amp; CAREERS</button>
+            <button type="button">BLOG</button>
+            <button type="button">CONTACT</button>
+          </div>
+        </nav>
+        
+        <div class="shell hero-shell">
+          <div class="hero-columns">
+            <div class="hero-copy-right">
+              <p>Answering all of<br />your building codes<br />needs.</p>
+            </div>
+
+            <div class="hero-title">
+              <h1>Outsource</h1>
+              <h1>Consultants, Inc.</h1>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="intro-section" id="page-2">
+        <!-- 3个米色长方形覆盖层 -->
+        <div class="rectangle rectangle-1" data-index="1"></div>
+        <div class="rectangle rectangle-2" data-index="2"></div>
+        <div class="rectangle rectangle-3" data-index="3"></div>
+        <div class="intro-layout">
+          <div class="intro-text">
+            <span class="text-line">Our team of over 50 in-house consultants in New York City</span><br />
+            <span class="text-line">helps clients navigate even the toughest building code and</span><br />
+            <span class="text-line">zoning challenges. With 33 years of experience across</span><br />
+            <span class="text-line">construction regulations, our team supports feasibility</span><br />
+            <span class="text-line">reviews, CCD1s, amendments, fire safety, land use matters,</span><br />
+            <span class="text-line">landmark coordination, violation resolution, and all the</span><br />
+            <span class="text-line">permits, approvals, and sign-offs your project needs.</span>
+          </div>
+
+          <div class="intro-notes-container">
+            <div class="intro-note intro-note-left">
+              <span class="text-line">FROM THE FIRST IDEA TO SIGN-OFF,</span><br />
+              <span class="text-line">OUTSOURCE IS BY YOUR SIDE HELPING YOU</span><br />
+              <span class="text-line">NAVIGATE CODE, CONSTRUCTION, COMPLIANCE,</span><br />
+              <span class="text-line">AND WHATEVER ELSE YOUR PROJECT NEEDS.</span>
+            </div>
+
+            <div class="intro-note intro-note-right">
+              <span class="text-line">PARTNERING WITH OUTSOURCE SPECIAL</span><br />
+              <span class="text-line">INSPECTIONS, INC., WE DELIVER A</span><br />
+              <span class="text-line">STREAMLINED, START-TO-FINISH APPROACH</span><br />
+              <span class="text-line">FROM PERMITS AND APPROVALS TO</span><br />
+              <span class="text-line">INSPECTIONS AND SIGN-OFFS.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="services-section" id="page-3">
+        <div class="services-layout">
+          <div class="services-left">
+            <h2 class="services-title-our">Our</h2>
+            <div class="services-image">
+              <div class="services-image-wrapper">
+                <div class="services-image-slider">
+                  <img id="service-image-current" class="service-image-slide active" src="https://images.prismic.io/oci-awards/aYeO490YXLCxVj7n_mg-6-.png?auto=format,compress&w=900&q=80" alt="Building" />
+                  <img id="service-image-next" class="service-image-slide" src="https://images.prismic.io/oci-awards/aYeO490YXLCxVj7n_mg-6-.png?auto=format,compress&w=900&q=80" alt="Building" />
+                </div>
+                <div class="services-image-halftone"></div>
+                <canvas class="services-image-canvas"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <div class="services-right">
+            <h2 class="services-title-services">Services</h2>
+            
+            <div class="services-list">
+              <article class="service-row is-open" data-service="0">
+                <button class="service-toggle" type="button" aria-expanded="true">
+                  <span>Construction Expediting</span>
+                  <span class="service-mark">+</span>
+                </button>
+                <div class="service-detail">
+                  <p>WE ACCELERATE APPROVALS, KEEP AGENCIES MOVING, AND ELIMINATE DELAYS FROM START TO FINISH.</p>
+                  <span class="learn-more-link">[ LEARN MORE → ]</span>
+                </div>
+              </article>
+
+              <article class="service-row" data-service="1">
+                <button class="service-toggle" type="button" aria-expanded="false">
+                  <span>Sign-Offs &amp; Project Closeouts</span>
+                  <span class="service-mark">+</span>
+                </button>
+                <div class="service-detail">
+                  <p>COORDINATED CLOSEOUT SUPPORT THAT MOVES ACTIVE JOBS TOWARD FINAL APPROVALS AND SIGN-OFFS.</p>
+                  <span class="learn-more-link">[ LEARN MORE → ]</span>
+                </div>
+              </article>
+
+              <article class="service-row" data-service="2">
+                <button class="service-toggle" type="button" aria-expanded="false">
+                  <span>Class 1 Special Inspections</span>
+                  <span class="service-mark">+</span>
+                </button>
+                <div class="service-detail">
+                  <p>INTEGRATED INSPECTION WORKFLOWS WITH REPORTING, AGENCY ALIGNMENT, AND JOBSITE FOLLOW-THROUGH.</p>
+                  <span class="learn-more-link">[ LEARN MORE → ]</span>
+                </div>
+              </article>
+
+              <article class="service-row" data-service="3">
+                <button class="service-toggle" type="button" aria-expanded="false">
+                  <span>Violation Resolution &amp; Building Compliance</span>
+                  <span class="service-mark">+</span>
+                </button>
+                <div class="service-detail">
+                  <p>TARGETED STRATEGIES TO UNLOCK PROJECTS STALLED BY OPEN VIOLATIONS, AGENCY COMMENTS, OR COMPLIANCE ISSUES.</p>
+                  <span class="learn-more-link">[ LEARN MORE → ]</span>
+                </div>
+              </article>
+
+              <article class="service-row" data-service="4">
+                <button class="service-toggle" type="button" aria-expanded="false">
+                  <span>Job Approvals</span>
+                  <span class="service-mark">+</span>
+                </button>
+                <div class="service-detail">
+                  <p>SMART SUBMISSION PACING AND REVIEW MANAGEMENT FOR JOB APPROVALS ACROSS COMPLEX TYPOLOGIES.</p>
+                  <span class="learn-more-link">[ LEARN MORE → ]</span>
+                </div>
+              </article>
+
+              <article class="service-row" data-service="5">
+                <button class="service-toggle" type="button" aria-expanded="false">
+                  <span>Code &amp; Zoning Consultation</span>
+                  <span class="service-mark">+</span>
+                </button>
+                <div class="service-detail">
+                  <p>EARLY-STAGE FEASIBILITY, INTERPRETATION, AND RISK CLARITY BEFORE A PROJECT COMMITS TO THE WRONG PATH.</p>
+                  <span class="learn-more-link">[ LEARN MORE → ]</span>
+                </div>
+              </article>
+            </div>
+
+            <div class="services-view-all">VIEW ALL SERVICES</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="process-section" id="page-4">
+        <div class="process-container">
+          <div class="process-header">
+            <span class="process-label">PROCESS</span>
+            <span class="process-date">[OCT. 2]</span>
+          </div>
+          
+          <div class="process-grid-lines">
+            <div class="grid-line line-1-top"></div>
+            <div class="grid-line line-1-bottom"></div>
+            <div class="grid-line line-2"></div>
+          </div>
+          
+          <div class="process-content">
+            <div class="process-left">
+              <h2 class="process-title">
+                <span>Here</span>
+                <span>at every</span>
+                <span>step</span>
+              </h2>
+              
+              <p class="process-note">
+                NAVIGATING REGULATORY AGENCIES CAN SEEM LIKE AN INSURMOUNTABLE TASK FOR ARCHITECTS, ENGINEERS, OWNERS AND CONTRACTORS.
+              </p>
+            </div>
+
+            <div class="process-right">
+              <article class="process-card card-1">
+                <div class="process-card-head">
+                  <h3>Strategy</h3>
+                  <span>01</span>
+                </div>
+                <p>EXPERTS IN BUILDING AND ZONING CODE, GUIDING YOUR PROJECT WITH CONFIDENCE.</p>
+              </article>
+
+              <article class="process-card card-2">
+                <div class="process-card-head">
+                  <h3>Communication</h3>
+                  <span>02</span>
+                </div>
+                <p>TRUSTWORTHY, QUICK, ACCOUNTABLE, AND FLUENT IN ALL THINGS RELATED TO THE DEPARTMENT OF BUILDINGS.</p>
+              </article>
+
+              <article class="process-card card-3">
+                <div class="process-card-head">
+                  <h3>Navigation</h3>
+                  <span>03</span>
+                </div>
+                <p>TURNING CITY AGENCY HURDLES INTO ON-TIME PROJECT MILESTONES.</p>
+              </article>
+
+              <article class="process-card card-4">
+                <div class="process-card-head">
+                  <h3>Results</h3>
+                  <span>04</span>
+                </div>
+                <p>FAST, COMPLIANT, AND PRECISE, POWERED BY OUR PROPRIETARY TECHNOLOGIES.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="projects-section">
+        <div class="projects-container">
+          <div class="projects-heading">
+            <h2><span>Most Recent</span><br><span>Projects</span></h2>
+          </div>
+
+          <div class="projects-grid">
+            <article class="project-tile tile-left">
+              <div class="project-meta">
+                <span data-text="01">01</span>
+                <span data-text="RETAIL">RETAIL</span>
+              </div>
+              <h3><span>Dolce &amp; Gabbana</span><br><span>Boutique</span></h3>
+              <div class="project-image-wrapper">
+                <img src="https://images.prismic.io/oci-awards/aYeO790YXLCxVj7t_ESB.jpg?auto=format,compress&rect=0,398,5616,2948&w=900&h=620&q=80" alt="Dolce & Gabbana Boutique" />
+                <canvas class="project-image-canvas"></canvas>
+              </div>
+            </article>
+
+            <article class="project-tile tile-center">
+              <div class="project-meta">
+                <span data-text="02">02</span>
+                <span data-text="RETAIL">RETAIL</span>
+              </div>
+              <h3><span>Tiffany Flagship</span></h3>
+              <div class="project-image-wrapper">
+                <img src="https://images.prismic.io/oci-awards/aYeOzd0YXLCxVj7c_ExpertConsultation.jpg?auto=format,compress&w=900&q=80" alt="Tiffany Flagship" />
+                <canvas class="project-image-canvas"></canvas>
+              </div>
+            </article>
+
+            <article class="project-tile tile-right">
+              <div class="project-meta">
+                <span data-text="03">03</span>
+                <span data-text="HOTELS">HOTELS</span>
+              </div>
+              <h3><span>Dream Hotel</span></h3>
+              <div class="project-image-wrapper">
+                <img src="https://images.prismic.io/oci-awards/aYeOP90YXLCxVj6Q_Commercial-Building-NYC.jpeg?auto=format,compress&rect=13,0,5669,3392&w=900&h=620&q=80" alt="Dream Hotel" />
+                <canvas class="project-image-canvas"></canvas>
+              </div>
+            </article>
+          </div>
+
+          <div class="project-button-wrapper">
+            <button class="project-button">VIEW ALL PROJECTS</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="testimonial-section section-paper">
+        <div class="testimonial-container">
+          <div class="testimonial-left">
+            <div class="testimonial-rail-line top-line"></div>
+            <button class="testimonial-arrow testimonial-arrow-prev" type="button" aria-label="Previous">↑</button>
+            <button class="testimonial-arrow testimonial-arrow-next" type="button" aria-label="Next">↓</button>
+            <div class="testimonial-rail-line bottom-line"></div>
+          </div>
+
+          <div class="testimonial-content">
+            <div class="testimonial-slides">
+              <!-- Slide 1 -->
+              <div class="testimonial-slide" data-index="0">
+                <div class="testimonial-brand"><span>SKANSKA</span></div>
+                <blockquote class="testimonial-quote">
+                  <span>"I have worked with Outsource for many years</span>
+                  <span>on various projects, including the Lavelle School</span>
+                  <span>for the Blind. When we work with Outsource,</span>
+                  <span>we know that we are going to have a project</span>
+                  <span>that is completed on time."</span>
+                </blockquote>
+                <div class="testimonial-meta">
+                  <span class="testimonial-counter" data-text="01 / 03">01 / 03</span>
+                  <span class="testimonial-author" data-text="STUART PIDD, CMO SKANSKA">STUART PIDD, CMO<br>SKANSKA</span>
+                </div>
+              </div>
+              
+              <!-- Slide 2 -->
+              <div class="testimonial-slide" data-index="1">
+                <div class="testimonial-brand"><span>TURNER</span></div>
+                <blockquote class="testimonial-quote">
+                  <span>"Outsource Consultants has been an invaluable</span>
+                  <span>partner on our most complex projects.</span>
+                  <span>Their expertise in navigating regulatory</span>
+                  <span>requirements has saved us time and resources."</span>
+                </blockquote>
+                <div class="testimonial-meta">
+                  <span class="testimonial-counter" data-text="02 / 03">02 / 03</span>
+                  <span class="testimonial-author" data-text="MICHAEL CHEN, VP TURNER">MICHAEL CHEN, VP<br>TURNER</span>
+                </div>
+              </div>
+              
+              <!-- Slide 3 -->
+              <div class="testimonial-slide" data-index="2">
+                <div class="testimonial-brand"><span>AECOM</span></div>
+                <blockquote class="testimonial-quote">
+                  <span>"The team at Outsource consistently delivers</span>
+                  <span>exceptional results. Their attention to detail</span>
+                  <span>and commitment to excellence make them</span>
+                  <span>our go-to consultants for critical infrastructure</span>
+                  <span>projects."</span>
+                </blockquote>
+                <div class="testimonial-meta">
+                  <span class="testimonial-counter" data-text="03 / 03">03 / 03</span>
+                  <span class="testimonial-author" data-text="SARAH JOHNSON, DIRECTOR AECOM">SARAH JOHNSON, DIRECTOR<br>AECOM</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="news-section">
+        <div class="news-layout">
+          <article class="news-feature">
+            <img class="news-feature-img active" data-index="0" src="https://images.prismic.io/oci-awards/aYeOud0YXLCxVj7N_ebike.jpg?auto=format,compress&w=1200&h=1200&q=80" alt="" />
+            <img class="news-feature-img" data-index="1" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&h=1200&q=80" alt="" />
+            <img class="news-feature-img" data-index="2" src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&h=1200&q=80" alt="" />
+            <img class="news-feature-img" data-index="3" src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&h=1200&q=80" alt="" />
+            <canvas class="news-feature-canvas"></canvas>
+          </article>
+
+          <div class="news-hover-bg"></div>
+
+          <article class="news-card news-card-1" data-index="0">
+            <span class="news-date">02.12</span>
+            <span class="news-tag">CONTRACTORS</span>
+            <h3>Building Inclusivity: Celebrating Black History in Construction, Architecture, &amp; Engineering</h3>
+            <div class="news-arrow"><span>↗</span></div>
+          </article>
+
+          <article class="news-card news-card-2" data-index="1">
+            <span class="news-date">02.08</span>
+            <span class="news-tag">ARCHITECTS</span>
+            <h3>Outsource Consultants Inc becomes SCA Certified MBE</h3>
+            <div class="news-arrow"><span>↗</span></div>
+          </article>
+
+          <article class="news-card news-card-3" data-index="2">
+            <span class="news-date">02.08</span>
+            <span class="news-tag">BUILDING OWNERS</span>
+            <h3>Leaving Lead Behind: How NYC Plans to Replace Lead Pipes</h3>
+            <div class="news-arrow"><span>↗</span></div>
+          </article>
+
+          <article class="news-card news-card-4" data-index="3">
+            <span class="news-date">02.08</span>
+            <span class="news-tag">BUILDING OWNERS</span>
+            <h3>Powering Up: Applications Open for E-Bike Charging Cabinets</h3>
+            <div class="news-arrow"><span>↗</span></div>
+          </article>
+        </div>
+      </section>
+
+      <footer class="site-footer">
+        <div class="footer-layout">
+          <!-- 左侧：圆形十字准星图标 -->
+          <div class="footer-mark">
+            <svg viewBox="0 0 200 200" class="footer-crosshair">
+              <circle cx="100" cy="100" r="70" fill="none" stroke="#E8E6DF" stroke-width="20"/>
+              <line x1="100" y1="20" x2="100" y2="180" stroke="#1425B1" stroke-width="20"/>
+              <line x1="20" y1="100" x2="180" y2="100" stroke="#1425B1" stroke-width="20"/>
+              <line x1="100" y1="20" x2="100" y2="180" stroke="#E8E6DF" stroke-width="8"/>
+              <line x1="20" y1="100" x2="180" y2="100" stroke="#E8E6DF" stroke-width="8"/>
+            </svg>
+          </div>
+
+          <!-- 左下角：版权信息 -->
+          <div class="footer-copyright scramble-text">© 2026. OUTSOURCE CONSULTANTS, INC. ALL RIGHTS RESERVED.</div>
+
+          <!-- 中间列1：主导航 -->
+          <div class="footer-col footer-col-1">
+            <div class="footer-nav">
+              <span class="scramble-text">ABOUT</span>
+              <span class="scramble-text">SERVICES</span>
+              <span class="scramble-text">PROJECTS</span>
+              <span class="scramble-text">CLIENTS</span>
+            </div>
+            <div class="footer-faq">
+              <span class="scramble-text">FAQ</span>
+            </div>
+            <div class="footer-social">
+              <span class="scramble-text">FACEBOOK</span>
+              <span class="scramble-text">INSTAGRAM</span>
+              <span class="scramble-text">LINKEDIN</span>
+              <span class="scramble-text">X</span>
+            </div>
+          </div>
+
+          <!-- 中间列2：次要导航 -->
+          <div class="footer-col footer-col-2">
+            <div class="footer-nav-secondary">
+              <span class="scramble-text">CULTURE &amp; CAREERS</span>
+              <span class="scramble-text">BLOG</span>
+              <span class="scramble-text">CONTACT</span>
+            </div>
+          </div>
+
+          <!-- 右侧列：联系信息 -->
+          <div class="footer-col footer-col-3">
+            <div class="footer-contact-header">
+              <span class="scramble-text">STAY IN TOUCH</span>
+              <span class="footer-divider">|</span>
+              <span class="scramble-text">1-212-732-0555</span>
+            </div>
+            <form class="footer-form">
+              <input type="email" placeholder="Your email..." />
+              <button type="submit">
+                <span>→</span>
+              </button>
+            </form>
+            <div class="footer-policy">
+              <span class="scramble-text">PRIVACY POLICY</span>
+              <span class="scramble-text">TERMS AND CONDITIONS</span>
+              <span class="scramble-text">MADE BY BUZZWORTHY</span>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

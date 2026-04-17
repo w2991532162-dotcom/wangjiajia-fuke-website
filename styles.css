@@ -1,0 +1,1769 @@
+@font-face {
+  font-family: "PP Neue Montreal";
+  src: url("https://oci.madebybuzzworthy.com/fonts/PPNeueMontreal-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GT America Mono";
+  src: url("https://oci.madebybuzzworthy.com/fonts/GTAmericaMono-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+:root {
+  --blue: #1f2cc7;
+  --paper: #efeee8;
+  --paper-soft: #f7f6f0;
+  --line: rgba(31, 44, 199, 0.22);
+  --line-strong: rgba(31, 44, 199, 0.55);
+  --max-width: 1440px;
+  --side-pad: 18px;
+  --glow-x: 77%;
+  --glow-y: 43%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--blue);
+  font-family: "PP Neue Montreal", Arial, sans-serif;
+}
+
+body {
+  min-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* 完全隐藏滚动条 */
+::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  padding: 0;
+  color: inherit;
+  background: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.shell {
+  width: min(100%, var(--max-width));
+  margin: 0 auto;
+  padding: 0 var(--side-pad);
+}
+
+.shell-header {
+  width: 100%;
+  max-width: none;
+}
+
+.section-paper {
+  background: var(--paper);
+}
+
+.section-blue {
+  background: var(--blue);
+  color: var(--paper);
+}
+
+.site-header {
+  position: fixed;
+  top: 18px;
+  left: 0;
+  right: 0;
+  z-index: 99999;
+  pointer-events: none;
+}
+
+.topbar {
+  height: 58px;
+  display: grid;
+  grid-template-columns: 280px 1fr 58px;
+  align-items: start;
+  pointer-events: auto;
+}
+
+.brand-chip,
+.topbar-actions {
+  min-height: 58px;
+  border-left: 0;
+}
+
+.brand-chip {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 16px;
+  color: var(--paper);
+  background: #1425B1;
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  z-index: 999999;
+}
+
+.brand-chip-icon {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+}
+
+.brand-chip-text {
+  font-family: "GT America Mono", monospace;
+  font-size: 17px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+
+
+.topbar-actions {
+  display: flex;
+  align-items: stretch;
+  border-right: 0;
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 999999;
+}
+
+/* 导航菜单滑出效果 */
+.nav-menu-slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  color: #1425B1;
+  min-height: 58px;
+  width: 0;
+  overflow: hidden;
+  transition: width 0.3s ease;
+}
+
+.nav-menu-slider.is-open {
+  width: 120px;
+}
+
+.nav-menu-text {
+  font-family: "GT America Mono", monospace;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s ease 0.1s;
+}
+
+.nav-menu-slider.is-open .nav-menu-text {
+  opacity: 1;
+}
+
+.corner-cta {
+  min-height: 58px;
+  display: grid;
+  place-items: center;
+  width: 58px;
+  background: #1425B1;
+  color: var(--paper);
+  border: none;
+  cursor: pointer;
+}
+
+.corner-cta svg {
+  width: 24px;
+  height: 24px;
+}
+
+.hero-section {
+  position: relative;
+  height: 100vh;
+  min-height: 768px;
+  overflow: hidden;
+  background: #0f172a;
+}
+
+/* 鼠标轨迹 Canvas - 在文字下方 */
+.mouse-trail-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* SVG 点阵纹理背景 */
+.hero-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Ccircle cx='2' cy='2' r='1' fill='white' opacity='0.05'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* 径向渐变背景 */
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: radial-gradient(ellipse at 20% 30%, #1e3a5f 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Hero 目录导航 - 固定定位 */
+.hero-nav {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.hero-nav.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero-nav-col {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  pointer-events: auto;
+  z-index: 101;
+}
+
+/* 白色竖线 - 作为底图一部分，只出现在第一页 */
+.hero-line {
+  position: absolute;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* 上半段竖线 - 到大标题上方20pt停止 */
+.hero-line::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: calc(100% - 270px);
+  background: rgba(239, 238, 232, 0.6);
+}
+
+/* 下半段竖线 - 从大标题下方20pt开始 */
+.hero-line::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 1px;
+  height: 53px;
+  background: rgba(239, 238, 232, 0.6);
+}
+
+/* 左侧竖线位置 - about列左侧20pt，上半段更短以避开大标题 */
+.hero-line-left {
+  left: calc(970 / 1920 * 100% - 20pt);
+}
+
+/* about左侧线 - 上半段更短，与大标题上方间隔20pt */
+.hero-line-left::before {
+  height: calc(100% - 447px);
+}
+
+/* about左侧线 - 下半段 */
+.hero-line-left::after {
+  height: 53px;
+}
+
+/* 右侧竖线位置 */
+.hero-line-right {
+  left: calc(1470 / 1920 * 100% - 20pt);
+}
+
+/* 大标题样式 */
+.hero-title {
+  grid-column: 1 / -1;
+  align-self: end;
+  z-index: 11;
+}
+
+.hero-nav-col-left {
+  left: calc(970 / 1920 * 100%);
+}
+
+.hero-nav-col-right {
+  left: calc(1470 / 1920 * 100%);
+}
+
+.hero-nav-col button {
+  font-family: "GT America Mono", monospace;
+  font-size: 17px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(239, 238, 232, 0.92);
+  text-align: left;
+  width: fit-content;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+  z-index: 102;
+  pointer-events: auto;
+}
+
+.hero-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    radial-gradient(circle at var(--glow-x) var(--glow-y), rgba(100, 120, 255, 0.5), rgba(80, 100, 220, 0.25) 12%, rgba(60, 80, 180, 0.1) 24%, transparent 40%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0));
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+/* 额外的蓝色叠加层 */
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background:
+    linear-gradient(180deg, rgba(31, 44, 199, 0.3) 0%, rgba(13, 19, 85, 0.4) 100%);
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+
+.hero-image {
+  position: absolute;
+  inset: 0;
+  background:
+    url("https://images.prismic.io/oci-awards/aYePB90YXLCxVj72_adrien-olichon-_UuN_2ixJvA-unsplash.jpg?auto=format,compress&rect=784,783,4918,2754&w=2400&h=1600&q=80")
+      center center / cover no-repeat;
+  filter: grayscale(1) contrast(1.2) brightness(0.7);
+}
+
+/* 蓝色半调效果 - #1425B1 plus lighten */
+.hero-image-halftone {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background-color: #1425B1;
+  mix-blend-mode: plus-lighter;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.hero-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(31, 44, 199, 0.6) 0%, rgba(13, 19, 85, 0.7) 100%);
+  mix-blend-mode: soft-light;
+  z-index: 1;
+}
+
+.hero-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 1px,
+      rgba(100, 150, 255, 0.25) 1px,
+      rgba(100, 150, 255, 0.25) 3px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 1px,
+      rgba(100, 150, 255, 0.25) 1px,
+      rgba(100, 150, 255, 0.25) 3px
+    );
+  pointer-events: none;
+  z-index: 2;
+}
+
+.hero-shell {
+  position: relative;
+  height: 100vh;
+  min-height: 768px;
+  width: 100%;
+  max-width: none;
+  padding: 0 34px;
+  z-index: 10;
+}
+
+.hero-columns {
+  height: 100vh;
+  min-height: 768px;
+  display: grid;
+  grid-template-columns: minmax(0, 2.06fr) 1fr;
+  align-items: end;
+  padding: 165px 0 80px;
+}
+
+.hero-copy-right {
+  position: absolute;
+  top: 50%;
+  left: calc(1470 / 1920 * 100%);
+  transform: translateY(-50%);
+  font-size: 29px;
+  line-height: 1.3;
+  color: rgba(239, 238, 232, 0.85);
+  z-index: 11;
+}
+
+.hero-copy-right p,
+.hero-title h1 {
+  margin: 0;
+}
+
+.hero-title h1 {
+  font-size: clamp(168px, 13.5vw, 202px);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  font-weight: 800;
+  color: var(--paper);
+  margin: 0;
+}
+
+/* 第二页 - 全屏深蓝色页面布局 */
+.intro-section {
+  width: 100%;
+  height: 100vh;
+  background-color: #1425B1;
+  overflow: hidden;
+  position: relative;
+}
+
+/* 3个米色长方形覆盖层 */
+.rectangle {
+  position: absolute;
+  left: 0;
+  height: 155px;
+  background-color: #E8E6DF;
+  z-index: 50;
+  transform: translateX(-100%);
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+/* 长方形1 - 最上方，宽180pt (150pt * 1.2) */
+.rectangle-1 {
+  width: 180pt;
+  bottom: 310px;
+}
+
+/* 长方形2 - 中间，宽422pt (352pt * 1.2) */
+.rectangle-2 {
+  width: 422pt;
+  bottom: 155px;
+}
+
+/* 长方形3 - 最下方，宽度50%与第三页竖线对齐 */
+.rectangle-3 {
+  width: 50%;
+  bottom: 0;
+}
+
+/* 长方形滚动绑定 - 无过渡，实时跟随滚动 */
+.rectangle.scrub {
+  transition: none;
+}
+
+/* 滑出弹性效果 - 弹簧回弹（更慢更自然） */
+.rectangle.bounce-out {
+  transition: transform 1.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* 逐行向上滑入渐显动画 */
+.text-line {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(30px);
+  will-change: opacity, transform;
+  transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
+              transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.text-line.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.intro-layout {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 100px 80px 60px 18px;
+  box-sizing: border-box;
+}
+
+/* 顶部大文本区 */
+.intro-text {
+  font-size: 55px;
+  font-weight: 100;
+  color: #ffffff;
+  max-width: 1400px;
+  text-align: left;
+  line-height: 1.05;
+  margin: 0;
+}
+
+/* 底部文本区容器 */
+.intro-notes-container {
+  display: flex;
+  justify-content: flex-start;
+  gap: 80px;
+  width: 100%;
+  padding-left: calc(970 / 1920 * 100%);
+  transform: translateY(-160px);
+}
+
+/* 底部小文本块 */
+.intro-note {
+  font-family: "PP Neue Montreal", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: left;
+  line-height: 1.8;
+  max-width: 380px;
+}
+
+/* 第三页样式 - Services页面 */
+.services-section {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #E8E6DF;
+  color: #1425B1;
+  position: relative;
+  padding: 120px 0 80px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.services-section::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 40pt;
+  width: 1px;
+  height: calc(100% - 40pt);
+  background-color: #1425B1;
+  z-index: 10;
+}
+
+.services-layout {
+  width: 100%;
+  max-width: 100%;
+  min-height: calc(100vh - 200px);
+  display: flex;
+  position: relative;
+}
+
+/* 左侧区域 - Our标题 + 建筑图片 */
+.services-left {
+  flex: 0 0 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-left: 18px;
+  position: relative;
+}
+
+.services-title-our {
+  font-size: clamp(84px, 11.2vw, 168px);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: 0.05em;
+  color: #1425B1;
+  margin: 0;
+  word-break: break-word;
+}
+
+.services-image {
+  width: 90%;
+  max-width: 320px;
+  margin: 250pt auto 40px;
+}
+
+.services-image-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+}
+
+/* 图片幻灯片容器 */
+.services-image-slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* 图片幻灯片 - 渐变切换效果 */
+.service-image-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.2) brightness(0.7);
+  opacity: 0;
+  transition: opacity 0.6s ease-out;
+}
+
+/* 当前图片 */
+.service-image-slide.active {
+  opacity: 1;
+}
+
+.services-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: grayscale(1) contrast(1.2) brightness(0.7);
+}
+
+/* 蓝色半调效果 */
+.services-image-halftone {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background-color: #1425B1;
+  mix-blend-mode: plus-lighter;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* 鼠标轨迹 Canvas */
+.services-image-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* 右侧区域 - Services标题 + 服务列表 */
+.services-right {
+  flex: 1;
+  padding-left: 20pt;
+  padding-right: 48px;
+  display: flex;
+  flex-direction: column;
+}
+
+.services-title-services {
+  font-size: clamp(84px, 11.2vw, 168px);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: 0.05em;
+  color: #1425B1;
+  margin: 0 0 60px 0;
+  word-break: break-word;
+}
+
+/* 服务列表 */
+.services-list {
+  width: 100%;
+  flex: 1;
+}
+
+.service-row {
+  border-top: 1px solid #1425B1;
+  padding: 22px 0;
+}
+
+.service-row:last-child {
+  border-bottom: 1px solid #1425B1;
+}
+
+.service-toggle {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 0;
+  color: #1425B1;
+  font-family: "PP Neue Montreal", Arial, sans-serif;
+  font-size: 33.6px;
+  font-weight: 400;
+  letter-spacing: -0.3px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.service-mark {
+  font-size: 36px;
+  font-weight: 300;
+  width: 45px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.service-row.is-open .service-mark {
+  transform: rotate(45deg);
+}
+
+/* 展开状态的内容 - 延迟滑动效果 */
+.service-detail {
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+              opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              margin-top 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-row.is-open .service-detail {
+  max-height: 500px;
+  opacity: 1;
+  transform: translateY(0);
+  margin-top: 40px;
+}
+
+.service-detail p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #1425B1;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  max-width: 500px;
+  text-align: right;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-row.is-open .service-detail p {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.15s, 
+              transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.15s;
+}
+
+.learn-more-link {
+  color: #1425B1;
+  text-decoration: none;
+  font-size: 14px;
+  border-bottom: 1px solid #1425B1;
+  padding-bottom: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  align-self: flex-end;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-row.is-open .learn-more-link {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.22s, 
+              transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.22s;
+}
+
+/* 折叠状态隐藏内容 */
+.service-row:not(.is-open) .service-detail {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-10px);
+  margin-top: 0;
+}
+
+/* VIEW ALL SERVICES 按钮 */
+.services-view-all {
+  margin-top: 40px;
+  width: 100%;
+  padding: 20px 0;
+  font-family: "GT America Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #E8E6DF;
+  background-color: #1425B1;
+  border: 2px solid #1425B1;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.services-view-all:hover {
+  background-color: #ffffff;
+  color: #1425B1;
+}
+
+/* 第四页 - Process Section */
+.process-section {
+  min-height: 140vh;
+  background-color: #E8E6DF;
+  position: relative;
+  border-top: 1px solid #1425B1;
+  border-bottom: 1px solid #1425B1;
+}
+
+.process-container {
+  width: 100%;
+  min-height: 140vh;
+  padding: 24px 48px 80px 18px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* 顶部标签 */
+.process-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 60px;
+  font-family: "GT America Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #1425B1;
+}
+
+/* 背景网格线 */
+.process-grid-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.grid-line {
+  position: absolute;
+  top: 0;
+  width: 1pt;
+  height: 100%;
+  background-color: #1425B1;
+}
+
+.grid-line.line-1-top {
+  left: 33.33%;
+  top: 0;
+  height: calc(32% - 85pt);
+}
+
+.grid-line.line-1-bottom {
+  left: 33.33%;
+  top: calc(48% - 85pt);
+  height: calc(52% + 85pt);
+}
+
+.grid-line.line-2 {
+  left: 66.66%;
+}
+
+/* 主内容区域 */
+.process-content {
+  position: relative;
+  min-height: calc(100vh - 200px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  z-index: 1;
+}
+
+/* 左侧区域 */
+.process-left {
+  position: relative;
+}
+
+.process-title {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.process-title span {
+  font-size: clamp(97px, 13.5vw, 189px);
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: 0.03em;
+  color: #1425B1;
+  display: block;
+  opacity: 0;
+  transform: translateY(30px);
+  will-change: opacity, transform;
+  transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
+              transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.process-title span.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 左下角说明文字 */
+.process-note {
+  position: relative;
+  margin-top: 100pt;
+  left: 0;
+  max-width: 280px;
+  font-family: "GT America Mono", monospace;
+  font-size: 10px;
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1425B1;
+  opacity: 0;
+  transform: translateY(30px);
+  will-change: opacity, transform;
+  transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s,
+              transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s;
+}
+
+.process-note.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 右侧卡片区域 */
+.process-right {
+  display: flex;
+  flex-direction: column;
+  gap: 39px;
+  padding-top: 40px;
+}
+
+.process-card {
+  width: 576px;
+  padding: 28.8px 36px 36px;
+  background: #ffffff;
+  color: #1425B1;
+}
+
+.card-1 {
+  margin-left: 0;
+  transform: translate(400px, 300px) rotate(-12.5deg);
+  will-change: transform;
+}
+
+.card-2 {
+  margin-left: 0;
+  transform: translate(400px, 300px) rotate(12.2deg);
+  will-change: transform;
+}
+
+.card-3 {
+  margin-left: 0;
+  transform: translate(400px, 300px) rotate(-22deg);
+  will-change: transform;
+}
+
+.card-4 {
+  margin-left: 0;
+  transform: translate(400px, 300px) rotate(11.8deg);
+  will-change: transform;
+}
+
+/* scrub 状态 - 最终位置，全部左对齐 */
+.process-card.scrub {
+  transition: none;
+}
+
+.process-card.scrub.card-1,
+.process-card.scrub.card-2,
+.process-card.scrub.card-3,
+.process-card.scrub.card-4 {
+  transform: translate(0, 0) rotate(0deg);
+  margin-left: 0;
+}
+
+.process-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 21.6px;
+  border-bottom: 1px solid #1425B1;
+}
+
+.process-card-head h3 {
+  margin: 0;
+  font-size: 43.2px;
+  line-height: 1;
+  font-weight: 400;
+  color: #1425B1;
+}
+
+.process-card-head span {
+  font-family: "GT America Mono", monospace;
+  font-size: 25.2px;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  color: #1425B1;
+}
+
+.process-card p {
+  margin: 28.8px 0 0;
+  font-family: "GT America Mono", monospace;
+  font-size: 16.2px;
+  line-height: 1.5;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #1425B1;
+}
+
+/* 第五页 - Projects Section */
+.projects-section {
+  min-height: 100vh;
+  background-color: #E8E6DF;
+  position: relative;
+  border-top: 1px solid #1425B1;
+}
+
+.projects-container {
+  width: 100%;
+  padding: 60px 48px 80px 18px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.projects-heading {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.projects-heading h2 {
+  font-size: clamp(84px, 11.2vw, 168px);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: 0.05em;
+  color: #1425B1;
+  margin: 0;
+}
+
+.projects-heading h2 span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(30px);
+  will-change: opacity, transform;
+  transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
+              transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.projects-heading h2 span.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 项目网格布局 */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  position: relative;
+}
+
+/* 竖线分隔 */
+.projects-grid::before,
+.projects-grid::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 1pt;
+  height: 100%;
+  background-color: #1425B1;
+}
+
+.projects-grid::before {
+  left: 33.33%;
+}
+
+.projects-grid::after {
+  left: 66.66%;
+}
+
+/* 项目卡片 */
+.project-tile {
+  padding: 20px 30px 60px;
+  position: relative;
+  will-change: transform;
+}
+
+.tile-left {
+  padding-left: 0;
+}
+
+.tile-right {
+  padding-right: 0;
+}
+
+/* 项目元信息 */
+.project-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  font-family: "GT America Mono", monospace;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #1425B1;
+}
+
+/* 项目标题 */
+.project-tile h3 {
+  font-size: 39.2px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #1425B1;
+  margin: 0 0 20px 0;
+}
+
+/* 项目标题动画 */
+.project-tile h3 span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
+              transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.project-tile h3 span.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 项目图片容器 */
+.project-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.project-image-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #1425B1;
+  mix-blend-mode: multiply;
+  opacity: 0.7;
+  z-index: 1;
+}
+
+/* 项目图片鼠标轨迹canvas */
+.project-image-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.project-tile img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(100%) contrast(1.1);
+}
+
+/* 查看全部按钮 */
+.project-button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 90px;
+}
+
+.project-button {
+  display: inline-block;
+  padding: 24px 48px;
+  background: #1425B1;
+  color: #ffffff;
+  font-family: "GT America Mono", monospace;
+  font-size: 16.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 2px solid #1425B1;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.project-button:hover {
+  background-color: #ffffff;
+  color: #1425B1;
+}
+
+/* 第六页 - Testimonial Section */
+.testimonial-section {
+  min-height: 100vh;
+  background-color: #ffffff;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.testimonial-container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 104px 78px;
+  display: flex;
+  gap: 104px;
+}
+
+/* 左侧竖线和箭头 */
+.testimonial-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+  padding-top: 0;
+}
+
+.testimonial-rail-line {
+  width: 1px;
+  background-color: #1425B1;
+}
+
+.testimonial-rail-line.top-line {
+  height: 234px;
+}
+
+.testimonial-rail-line.bottom-line {
+  height: 260px;
+}
+
+.testimonial-arrow {
+  width: 65px;
+  height: 65px;
+  border: 1px solid #1425B1;
+  border-radius: 50%;
+  background: transparent;
+  color: #1425B1;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.testimonial-arrow:hover {
+  background-color: #1425B1;
+  color: #ffffff;
+}
+
+/* 右侧内容 */
+.testimonial-content {
+  flex: 1;
+  position: relative;
+}
+
+.testimonial-slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.testimonial-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 78px;
+}
+
+.testimonial-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.testimonial-brand {
+  font-size: 62.4px;
+  line-height: 1;
+  font-weight: 700;
+  color: #1425B1;
+  letter-spacing: 0.05em;
+}
+
+.testimonial-brand span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
+              transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.testimonial-slide.is-active .testimonial-brand span.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.testimonial-quote {
+  max-width: 1170px;
+  margin: 0;
+  font-size: 54.6px;
+  line-height: 1.3;
+  color: #1425B1;
+  font-weight: 400;
+}
+
+.testimonial-quote span {
+  display: block;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
+              transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.testimonial-slide.is-active .testimonial-quote span.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.testimonial-meta {
+  display: flex;
+  gap: 78px;
+  align-items: flex-start;
+  margin-top: 52px;
+}
+
+.testimonial-counter {
+  font-family: "GT America Mono", monospace;
+  font-size: 18.2px;
+  letter-spacing: 0.1em;
+  color: #1425B1;
+}
+
+.testimonial-author {
+  font-family: "GT America Mono", monospace;
+  font-size: 15.6px;
+  letter-spacing: 0.1em;
+  color: #1425B1;
+  line-height: 1.6;
+}
+
+/* 第七页 - News Section */
+.news-section {
+  background: #E8E6DF;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5vh 0;
+}
+
+.news-layout {
+  width: 97%;
+  height: 90vh;
+  display: grid;
+  grid-template-columns: 50% 25% 25%;
+  grid-template-rows: 50% 50%;
+  gap: 0;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+/* 平移的蓝色背景色块 - 固定在右侧卡片区域 */
+.news-hover-bg {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 25%;
+  height: 50%;
+  background: #1425B1;
+  z-index: 0;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.news-feature {
+  grid-row: 1 / span 2;
+  grid-column: 1;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.news-feature-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(100%) sepia(100%) hue-rotate(200deg) saturate(300%);
+  opacity: 0;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.news-feature-img.active {
+  opacity: 1;
+}
+
+/* 新闻图片区域鼠标轨迹canvas */
+.news-feature-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+/* 所有卡片默认透明背景 */
+.news-card {
+  background: transparent;
+  color: #1425B1;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  overflow: visible;
+  border-bottom: 1px solid #1425B1;
+  border-left: 1px solid #1425B1;
+  z-index: 2;
+}
+
+/* 卡片grid定位 */
+.news-card-1 {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.news-card-2 {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.news-card-3 {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.news-card-4 {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+/* 默认所有卡片文字蓝色，JavaScript会控制当前激活的卡片为米色 */
+.news-card {
+  color: #1425B1;
+}
+
+.news-date {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  font-family: "GT America Mono", monospace;
+  font-size: 16.8px;
+  letter-spacing: 0.05em;
+  color: inherit;
+  z-index: 3;
+}
+
+.news-tag {
+  font-family: "GT America Mono", monospace;
+  font-size: 13.2px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  color: inherit;
+  z-index: 3;
+}
+
+.news-card h3 {
+  font-size: 21.6px;
+  font-weight: 400;
+  line-height: 1.3;
+  margin: 0;
+  color: inherit;
+  position: relative;
+  z-index: 3;
+}
+
+
+
+/* 新闻卡片箭头悬浮效果 - 贴紧右上角 */
+.news-arrow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 79px;
+  height: 79px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0);
+  transform-origin: top right;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  background: #FFFFFF;
+}
+
+.news-arrow span {
+  font-size: 36px;
+  line-height: 1;
+  color: #1425B1;
+}
+
+/* 所有卡片悬浮时显示箭头 */
+.news-card:hover .news-arrow {
+  transform: scale(1);
+}
+
+/* ===== 最后一页 Footer ===== */
+.site-footer {
+  background: #1425B1;
+  color: #E8E6DF;
+  padding: 40px;
+  min-height: 36vh;
+}
+
+.footer-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 0.5fr 0.5fr 1fr;
+  grid-template-rows: 1fr auto;
+  gap: 0;
+  height: 100%;
+  min-height: calc(36vh - 80px);
+  position: relative;
+}
+
+/* 左侧圆形十字准星 */
+.footer-mark {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.footer-crosshair {
+  width: 168px;
+  height: 168px;
+}
+
+/* 版权信息 */
+.footer-copyright {
+  grid-column: 1;
+  grid-row: 2;
+  font-family: "GT America Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: #E8E6DF;
+  align-self: end;
+  padding-bottom: 20px;
+}
+
+/* 中间列 */
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  padding: 0 30px;
+  border-left: 1px solid rgba(232, 230, 223, 0.3);
+}
+
+.footer-col-1 {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+
+.footer-col-2 {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+}
+
+.footer-col-3 {
+  grid-column: 4;
+  grid-row: 1 / span 2;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+
+/* 导航链接 */
+.footer-nav,
+.footer-nav-secondary,
+.footer-social {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-nav span,
+.footer-nav-secondary span,
+.footer-social span,
+.footer-faq span,
+.footer-contact-header span[data-text],
+.footer-policy span {
+  font-family: "GT America Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: #E8E6DF;
+  cursor: default;
+}
+
+/* FAQ */
+.footer-faq {
+  margin: auto 0;
+}
+
+/* 右侧联系信息 */
+.footer-contact-header {
+  font-family: "GT America Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: #E8E6DF;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-divider {
+  opacity: 0.5;
+}
+
+/* 邮件表单 */
+.footer-form {
+  display: flex;
+  border: 1px solid rgba(232, 230, 223, 0.4);
+  margin-top: 20px;
+}
+
+.footer-form input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 14px 16px;
+  color: #E8E6DF;
+  font-family: "PP Neue Montreal", Arial, sans-serif;
+  font-size: 14px;
+  outline: none;
+}
+
+.footer-form input::placeholder {
+  color: rgba(232, 230, 223, 0.5);
+}
+
+.footer-form button {
+  background: transparent;
+  border: none;
+  border-left: 1px solid rgba(232, 230, 223, 0.4);
+  padding: 0 20px;
+  color: #E8E6DF;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background 0.3s ease;
+}
+
+.footer-form button:hover {
+  background: rgba(232, 230, 223, 0.1);
+}
+
+/* 底部政策链接 */
+.footer-policy {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-policy a,
+.footer-policy span {
+  font-family: "GT America Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: #E8E6DF;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.footer-policy a:hover {
+  opacity: 0.7;
+}
