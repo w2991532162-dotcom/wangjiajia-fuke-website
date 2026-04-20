@@ -471,12 +471,13 @@ img {
 }
 
 .hero-title h1 {
-  font-size: clamp(168px, 13.5vw, 202px);
+  font-size: clamp(120px, 13.5vw, 202px);
   line-height: 0.95;
   letter-spacing: 0.02em;
   font-weight: 800;
   color: var(--paper);
   margin: 0;
+  white-space: nowrap;
 }
 
 /* 第二页 - 全屏深蓝色页面布局 */
@@ -627,13 +628,13 @@ img {
 }
 
 .services-title-our {
-  font-size: clamp(84px, 11.2vw, 168px);
+  font-size: clamp(60px, 11.2vw, 168px);
   font-weight: 700;
   line-height: 0.9;
   letter-spacing: 0.05em;
   color: #1425B1;
   margin: 0;
-  word-break: break-word;
+  white-space: nowrap;
 }
 
 .services-image {
@@ -714,13 +715,13 @@ img {
 }
 
 .services-title-services {
-  font-size: clamp(84px, 11.2vw, 168px);
+  font-size: clamp(60px, 11.2vw, 168px);
   font-weight: 700;
   line-height: 0.9;
   letter-spacing: 0.05em;
   color: #1425B1;
   margin: 0 0 60px 0;
-  word-break: break-word;
+  white-space: nowrap;
 }
 
 /* 服务列表 */

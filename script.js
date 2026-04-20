@@ -1,4 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // ===== 页面刷新时回到顶部 =====
+  if (history.scrollRestoration) {
+    history.scrollRestoration = 'manual';
+  }
+  window.scrollTo(0, 0);
+
   // ===== Lenis 平滑惯性滚动 =====
   const lenis = new Lenis({
     lerp: 0.1,
